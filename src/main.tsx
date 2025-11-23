@@ -26,7 +26,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="*" element={<NotFound />} />
 
             {/* ruta para probar componentes */}
-            <Route path="/pruebas" element={<ProductEditForm />} />
+            {/* <Route path="/pruebas" element={<ProductEditForm />} /> */}
           </Routes>
         </main>
 

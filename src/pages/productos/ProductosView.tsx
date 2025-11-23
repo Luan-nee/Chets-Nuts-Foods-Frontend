@@ -1,7 +1,9 @@
 import { useState, useMemo } from 'react';
-import { Search, Filter, SlidersHorizontal, X, Package, AlertTriangle, Hash, Box, TrendingUp } from 'lucide-react';
+import { Search, Filter, SlidersHorizontal, X, Package, AlertTriangle, TrendingUp } from 'lucide-react';
 import dataProducts from './data/productos.json';
 import MetricCard from '../../components/MetricCard';
+import ProductEditForm from './ProductEditForm';
+import ProductCard from './ProductCard';
 
 // Interfaz del producto
 interface Product {
@@ -12,115 +14,33 @@ interface Product {
   stock_minimo: number;
   porcentaje_ganancia: number;
   precio_compra_proveedor: number;
-  descripcion?: string;
+  descripcion: string;
   id_usuario_admin: number;
 }
-
-// Componente ProductCard
-const ProductCard: React.FC<Product> = ({
-  sku,
-  nombre,
-  stock_actual,
-  stock_minimo,
-  porcentaje_ganancia,
-  precio_compra_proveedor,
-  descripcion,
-}) => {
-  const precioVenta = precio_compra_proveedor * (1 + porcentaje_ganancia);
-  const gananciaTotal = precioVenta - precio_compra_proveedor;
-  const stockBajo = stock_actual <= stock_minimo;
-  const porcentajeStock = (stock_actual / stock_minimo) * 100;
-
-  return (
-    <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200">
-      {stockBajo && (
-        <div className="bg-red-500 text-white px-4 py-2 flex items-center gap-2 text-sm font-semibold">
-          <AlertTriangle size={16} />
-          <span>Stock Bajo</span>
-        </div>
-      )}
-
-      <div className="p-6">
-        <div className="mb-4">
-          <div className="flex items-center gap-2 text-gray-500 text-sm mb-2">
-            <Hash size={14} />
-            <span className="font-mono font-semibold">{sku}</span>
-          </div>
-          <h3 className="text-xl font-bold text-gray-800 mb-2">{nombre}</h3>
-          {descripcion && (
-            <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">{descripcion}</p>
-          )}
-        </div>
-
-        <div className="mb-4 bg-gray-50 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2 text-gray-700">
-              <Box size={16} />
-              <span className="font-semibold text-sm">Stock</span>
-            </div>
-            <span className={`text-xl font-bold ${stockBajo ? 'text-red-600' : 'text-green-600'}`}>
-              {stock_actual}
-            </span>
-          </div>
-          
-          <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
-            <div
-              className={`h-2 rounded-full transition-all ${stockBajo ? 'bg-red-500' : 'bg-green-500'}`}
-              style={{ width: `${Math.min(porcentajeStock, 100)}%` }}
-            ></div>
-          </div>
-          
-          <div className="flex items-center gap-1 text-xs text-gray-500">
-            <Package size={12} />
-            <span>Mínimo: {stock_minimo}</span>
-          </div>
-        </div>
-
-        <div className="space-y-2 mb-4">
-          <div className="flex justify-between items-center text-sm">
-            <span className="text-gray-600">Precio Compra</span>
-            <span className="text-gray-800 font-semibold">${precio_compra_proveedor.toFixed(2)}</span>
-          </div>
-
-          <div className="flex justify-between items-center text-sm">
-            <span className="text-gray-600">Ganancia</span>
-            <span className="text-blue-600 font-semibold">{(porcentaje_ganancia * 100).toFixed(2)}%</span>
-          </div>
-
-          <div className="flex justify-between items-center pt-2 border-t border-gray-200">
-            <span className="text-gray-800 font-semibold">Precio Venta</span>
-            <span className="text-xl font-bold text-green-600">${precioVenta.toFixed(2)}</span>
-          </div>
-
-          <div className="bg-green-50 rounded-lg p-2 text-center">
-            <span className="text-xs text-gray-600">Ganancia/unidad: </span>
-            <span className="text-sm font-bold text-green-700">${gananciaTotal.toFixed(2)}</span>
-          </div>
-        </div>
-
-        <div className="flex gap-2">
-          <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
-            Editar
-          </button>
-          <button className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
-            Ver Más
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // Componente principal de inventario
 export default function ProductosView() {
   // Datos de ejemplo
   const [products] = useState<Product[]>(dataProducts as Product[]);
+  const [dataProductShowForm, setDataProductShowForm] = useState<Product>({
+    id: 0,
+    sku: '',
+    nombre: '',
+    stock_actual: 0,
+    stock_minimo: 0,
+    porcentaje_ganancia: 0,
+    precio_compra_proveedor: 0,
+    descripcion: '',
+    id_usuario_admin: 0,
+  }); 
 
   // Estados de filtros
   const [searchTerm, setSearchTerm] = useState('');
   const [stockFilter, setStockFilter] = useState<'all' | 'low' | 'sufficient' | 'sinStock'>('all');
   const [priceRange, setPriceRange] = useState<'all' | 'low' | 'medium' | 'high'>('all');
   const [showFilters, setShowFilters] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState<number>(0);
+  const [isEditFormOpen, setIsEditFormOpen] = useState(false);
 
   // Productos filtrados
   const filteredProducts = useMemo(() => {
@@ -284,7 +204,7 @@ export default function ProductosView() {
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((product) => (
-              <ProductCard key={product.id} {...product} />
+              <ProductCard key={product.id} {...product} selectProduct={setDataProductShowForm} getIdProducto={() => {setSelectedProductId(product.id)} } showEditForm={setIsEditFormOpen} />
             ))}
           </div>
         ) : (
@@ -303,6 +223,23 @@ export default function ProductosView() {
           </div>
         )}
       </div>
+
+      {/* Formulario de edición de producto */}
+      {
+        isEditFormOpen && (
+          <ProductEditForm  
+          id = {dataProductShowForm.id}
+          sku = {dataProductShowForm.sku}
+          nombre = {dataProductShowForm.nombre}
+          stock_actual = {dataProductShowForm.stock_actual}
+          stock_minimo = {dataProductShowForm.stock_minimo}
+          porcentaje_ganancia = {dataProductShowForm.porcentaje_ganancia}
+          precio_compra_proveedor = {dataProductShowForm.precio_compra_proveedor}
+          descripcion = {dataProductShowForm.descripcion}
+          id_usuario_admin = {dataProductShowForm.id_usuario_admin}
+          closeForm={setIsEditFormOpen} />
+        )
+      }
     </div>
   );
 }

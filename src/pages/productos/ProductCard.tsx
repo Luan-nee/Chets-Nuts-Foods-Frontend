@@ -1,19 +1,34 @@
 import { Package, TrendingUp, AlertTriangle, DollarSign, Box } from 'lucide-react';
 
-interface ProductCardProps {
-  // id: number;
+interface Product {
+  id: number;
   sku: string;
   nombre: string;
   stock_actual: number;
   stock_minimo: number;
   porcentaje_ganancia: number;
   precio_compra_proveedor: number;
-  descripcion?: string;
+  descripcion: string;
   id_usuario_admin: number;
 }
 
+interface ProductCardProps {
+  id: number;
+  sku: string;
+  nombre: string;
+  stock_actual: number;
+  stock_minimo: number;
+  porcentaje_ganancia: number;
+  precio_compra_proveedor: number;
+  descripcion: string;
+  id_usuario_admin: number;
+  getIdProducto: (id: number) => void;
+  showEditForm: (isOpen: boolean) => void;
+  selectProduct?: (product: Product) => void | undefined;
+}
+
 export default function ProductCard ({
-  // id,
+  id,
   sku,
   nombre,
   stock_actual,
@@ -21,6 +36,10 @@ export default function ProductCard ({
   porcentaje_ganancia,
   precio_compra_proveedor,
   descripcion,
+  id_usuario_admin,
+  getIdProducto, 
+  showEditForm,
+  selectProduct
 } : ProductCardProps) {
   // Calcular precio de venta
   const precioVenta = precio_compra_proveedor * (1 + porcentaje_ganancia);
@@ -120,7 +139,10 @@ export default function ProductCard ({
 
         {/* Botones de acción */}
         <div className="flex gap-2">
-          <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
+          <button 
+            onClick={() => {getIdProducto(id); showEditForm(true); selectProduct && selectProduct({id, sku, nombre, stock_actual, stock_minimo, porcentaje_ganancia, precio_compra_proveedor, descripcion, id_usuario_admin});}}
+            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+          >
             Editar
           </button>
           <button className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
