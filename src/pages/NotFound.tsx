@@ -1,6 +1,6 @@
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="max-w-4xl w-full">
         {/* Main Content */}
         <div className="bg-gray-800 rounded-2xl shadow-2xl border border-gray-700 overflow-hidden">
@@ -42,9 +42,10 @@ export default function NotFound() {
               <p className="text-sm text-gray-500">
                 Si crees que esto es un error, por favor contacta al{" "}
                 <a
-                  href="https://chat.whatsapp.com/GRPKiFkcujb7yOfqfW8dTD?mode=hqrt2"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#equipo-de-soporte"
+                  // target="_blank"
+                  // rel="noopener noreferrer"
+                  onClick={()=>alert("En desarrollo")}
                   className="text-red-400 hover:text-red-300 underline"
                 >
                   equipo de soporte
@@ -56,8 +57,8 @@ export default function NotFound() {
 
         {/* Footer */}
         <div className="text-center mt-8">
-          <p className="text-sm text-gray-500">
-            © 2025 Tienda de abarrotes. Todos los derechos reservados.
+          <p className="text-sm">
+            © 2025 Chets Nuts Foods. Todos los derechos reservados.
           </p>
         </div>
       </div>
