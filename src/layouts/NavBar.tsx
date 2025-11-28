@@ -1,20 +1,7 @@
-import { X, FileText, Menu, Package, BarChart } from "lucide-react";
+import { X, Menu} from "lucide-react";
 import NavItem from "../components/NavItem";
 import { useState, useEffect } from "react";
-
-// const STORAGE_KEY = 'activeSection';
-
-interface NavItemProps {
-  label: string;
-  icon: React.ReactNode;
-  href: string;
-}
-
-const navItems: NavItemProps[] = [
-    { label: 'Estadisticas', icon: <BarChart size={20} />, href: '/estadisticas' },
-    { label: 'Productos', icon: <Package size={20} />, href: '/productos' },
-    { label: 'Guias de remision', icon: <FileText size={20} />, href: '/guias-remision' },
-  ];
+import { routes } from '../router/router';
 
 const STORAGE_KEY_NAV = 'navBarActiveItem';
 
@@ -53,11 +40,11 @@ export default function NavBar() {
 
         {/* Navigation Items */}
         <div className="flex flex-grow flex-col py-6 px-3 gap-2">
-          {navItems.map((item, index) => (
+          {routes.map((item, index) => (
             <NavItem
               key={index}
               href={item.href}
-              label={item.label}
+              label={item.text}
               isActive={activeItem === index}
               isCollapsed={isCollapsed}
               onClick={() => setActiveItem(index)}
