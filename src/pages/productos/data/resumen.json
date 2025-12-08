@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "message": "Resumen de productos obtenido con éxito",
+  "info": [
+    {
+    "cant_productos": 77,
+    "cant_productos_stock_bajo": 11,
+    "valor_inventario": 7777.86
+    }
+  ]
+}
