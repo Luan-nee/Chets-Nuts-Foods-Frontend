@@ -1,7 +1,7 @@
 interface MetricCardProps {
   label: string;
   value: number | string;
-  simboloValue: string;
+  simboloValue?: string;
   children: React.ReactNode;
   color: "blue" | "green" | "red" | "yellow";
 }
