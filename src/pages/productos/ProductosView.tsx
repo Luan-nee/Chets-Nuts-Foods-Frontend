@@ -18,10 +18,16 @@ interface Product {
   id_usuario_admin: number;
 }
 
+interface Response {
+  status: number,
+  message: string,
+  info: Product[]
+}
+
 // Componente principal de inventario
 export default function ProductosView() {
   // Datos de ejemplo
-  const [products] = useState<Product[]>(dataProducts as Product[]);
+  const [products] = useState<Product[]>((dataProducts as Response).info);
   const [dataProductShowForm, setDataProductShowForm] = useState<Product>({
     id: 0,
     sku: '',
