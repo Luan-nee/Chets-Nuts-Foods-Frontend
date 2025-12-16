@@ -99,22 +99,22 @@ export default function ProductosView() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">Inventario de Productos</h1>
-          <p className="text-gray-600">Gestiona y visualiza todos tus productos</p>
+          <h1 className="text-4xl font-bold text-text-primary mb-2">Inventario de Productos</h1>
+          <p className="text-gray-200">Gestiona y visualiza todos tus productos</p>
         </div>
 
         {/* Estadísticas */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <MetricCard label="Total Productos" value={stats.total} simboloValue="" color="blue">
-            <Package className="text-blue-600" size={24} />
+          <MetricCard name="Total Productos" value={stats.total} color="blue">
+            <Package className="w-6 h-6 text-white" size={24} />
           </MetricCard>
 
-          <MetricCard label="Stock Bajo" value={stats.lowStock} simboloValue="" color="red">
-            <AlertTriangle className="text-red-600" size={24} />
+          <MetricCard name="Stock Bajo" value={stats.lowStock} color="red">
+            <AlertTriangle className="w-6 h-6 text-white" size={24} />
           </MetricCard>
 
-          <MetricCard label="Valor Inventario" value={stats.totalValue.toFixed(2)} simboloValue="$" color="green">
-            <TrendingUp className="text-green-600" size={24} />
+          <MetricCard name="Valor Inventario" value={stats.totalValue} simboloValue="$" color=" green">
+            <TrendingUp className="w-6 h-6 text-white" size={24} />
           </MetricCard>
         </div>
 
