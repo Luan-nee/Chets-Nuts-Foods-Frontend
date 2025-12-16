@@ -7,17 +7,16 @@ import EstadisticasView from './pages/estadisticas/EstadisticasView.tsx';
 import GuiasRemisionView from './pages/guias-remision/GuiasRemisionView.tsx';
 import ProductosView from './pages/productos/ProductosView.tsx';
 import NavBar from './layouts/NavBar.tsx';
-import ProductEditForm from './pages/productos/ProductEditForm.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <div className="flex h-screen bg-gray-50">
+      <div className="flex h-screen">
         {/* Sidebar */}
         <NavBar />
 
         {/* Main Content Area */}
-        <main className="flex-1 p-2 bg-gradient-to-br from-gray-300 to-gray-100 overflow-y-auto">
+        <main className="flex-1 p-2 bg-base-dark overflow-y-auto">
           <Routes>
             <Route path="/" element={<EstadisticasView />} />
             <Route path="/estadisticas" element={<EstadisticasView />} />
