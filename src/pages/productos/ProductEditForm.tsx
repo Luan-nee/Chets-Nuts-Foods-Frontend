@@ -22,18 +22,6 @@ interface ProductFormData {
   closeForm: (isOpen: boolean) => void;
 }
 
-/*
-id: number;
-sku: string;
-nombre: string;
-stock_actual: number;
-stock_minimo: number;
-porcentaje_ganancia: number;
-precio_compra_proveedor: number;
-descripcion: string;
-id_usuario_admin: number;
-*/
-
 export default function ProductEditForm(product: ProductFormData) {
   const [formData, setFormData] = useState<ProductFormData>(product);
   const [precioVenta, setPrecioVenta] = useState(0);
@@ -54,8 +42,7 @@ export default function ProductEditForm(product: ProductFormData) {
 
   // Detectar cambios en el formulario
   useEffect(() => {
-    const hasChanges =
-      JSON.stringify(formData) !== JSON.stringify(product);
+    const hasChanges = JSON.stringify(formData) !== JSON.stringify(product);
     setIsModified(hasChanges);
   }, [formData]);
 
@@ -129,12 +116,12 @@ export default function ProductEditForm(product: ProductFormData) {
   const stockBajo = formData.stock_actual <= formData.stock_minimo;
 
   return (
-    <div className="max-w-3xl mx-auto my-auto bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-      <div className="relative grid grid-cols-2 md:grid-cols-3 gap-4 pt-12">
+    <div className="absolute h-screen inset-0 bg-black/70 backdrop-blur-sm flex items-start justify-center z-50 p-4">
+      <div className="bg-gray-200 rounded-2xl relative grid grid-cols-2 md:grid-cols-3 gap-4 p-12">
         {/* botón para cerrar el formulario */}
         <button
           onClick={handleCancel}
-          className="absolute top-0 right-0 p-2 border border-gray-300 rounded-lg bg-gray-200 hover:bg-red-500 hover:text-white transition-colors col-span-3"
+          className="absolute top-2 right-2 p-2 border border-gray-300 rounded-lg bg-gray-200 hover:bg-red-500 hover:text-white transition-colors col-span-3"
         >
           <X size={20} />
         </button>
@@ -387,7 +374,8 @@ export default function ProductEditForm(product: ProductFormData) {
             </p>
             <p className="text-xs text-gray-500 mt-1">
               Ejemplo: S/{formData.precio_compra_proveedor.toFixed(2)} × (1 +{" "}
-              {formData.porcentaje_ganancia}) = S/{precioVenta.toFixed(2)}
+              {formData.porcentaje_ganancia}) = S/
+              {precioVenta.toFixed(2)}
             </p>
           </div>
         </div>
