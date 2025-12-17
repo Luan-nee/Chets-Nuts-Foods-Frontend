@@ -16,7 +16,8 @@ createRoot(document.getElementById('root')!).render(
         <NavBar />
 
         {/* Main Content Area */}
-        <main className="flex-1 p-2 bg-base-dark overflow-y-auto">
+        {/* aplica un stylo tailwinds que sea similar a este color #0d1527 para el background */}
+        <main className="flex-1 p-2 bg-slate-900 overflow-y-auto">
           <Routes>
             <Route path="/" element={<EstadisticasView />} />
             <Route path="/estadisticas" element={<EstadisticasView />} />
