@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+# Chets Nuts Foods 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema web creado con la finalidad de optimizar la gestión de guias de remisión de empresas, siempre y cuando cuentes con su propia flota de vehiculos.
 
-Currently, two official plugins are available:
+## Arquitectura del Sistema de Gestión de Guías de Remisión
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Esta aplicación utiliza una arquitectura **Basada en Características (Features)**. El objetivo es mantener la lógica de negocio (Administrador, Trabajador, Chofer) desacoplada y facilitar la reutilización de componentes entre roles.
 
-## React Compiler
+### Estructura de Directorios
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+src/
+├── api/                    # Configuración de Axios/Fetch y clientes API
+├── components/             # Componentes comunes (Layout, Navbar, Sidebar, UI)
+│   ├── layout/
+│   │   ├── RoleBasedSidebar.tsx  # Menú que cambia según el rol
+│   │   └── AppLayout.tsx
+│   └── ui/                 # Botones, Inputs, Modales (Shared)
+├── config/                 # Roles, permisos y constantes
+│   └── roles.ts            # Definición de tipos: 'ADMIN' | 'WORKER' | 'DRIVER'
+├── features/               # El núcleo del negocio (Lógica compartida)
+│   ├── auth/               # Login y gestión de cuenta (Perfil del Trabajador)
+│   ├── guides/             # CRUD de Guías, detalles y estados de transporte
+│   │   ├── components/     # GuideTable, GuideDetail, StatusStepper
+│   │   ├── hooks/          # useGuides, useUpdateStatus
+│   │   └── services/       # endpoints: /guides
+│   ├── products/           # Gestión y listado de productos
+│   ├── tracking/           # Lógica de seguimiento (mapas o línea de tiempo)
+│   └── users/              # Gestión de permisos (solo para Admin)
+├── hooks/                  # Hooks globales (useAuth, useLocalStorage)
+├── routes/                 # Configuración de React Router
+│   ├── PrivateRoute.tsx    # Componente que valida sesión y ROL
+│   └── AppRoutes.tsx       # Definición de rutas por rol
+└── pages/                  # Vistas finales que ensamblan las features
+    ├── admin/              # DashboardAdmin, UserManagementPage
+    ├── worker/             # DashboardWorker, CreateGuidePage
+    └── driver/             # DriverTaskPage, UpdateDeliveryPage
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+eges
