@@ -22,26 +22,30 @@ src/
 │   ├── auth/               # Login y gestión de cuenta (Perfil del Trabajador)
 │   ├── guides/             # CRUD de Guías, detalles y estados de transporte
 │   │   ├── components/
-│   │   │   ├── TransporteGre.tsx           # 
-│   │   │   ├── SeguimientoGre.tsx          # 
-│   │   │   ├── TableGre.tsx                # 
-│   │   │   ├── DetallesGre.tsx             # 
-│   │   │   ├── FormCreateGre.tsx           # 
-│   │   │   ├── FormUpdateGre.tsx           # 
-│   │   │   └── FormDeleteGre.tsx           # 
+│   │   │   ├── TransporteGre.tsx            # 
+│   │   │   ├── SeguimientoGre.tsx           # 
+│   │   │   ├── TableGre.tsx                 # 
+│   │   │   ├── DetallesGre.tsx              # 
+│   │   │   ├── FormCreateGre.tsx            # 
+│   │   │   ├── FormUpdateGre.tsx            # 
+│   │   │   └── FormDeleteGre.tsx            # 
 │   │   ├── hooks/
 │   │   │   ├── useGre.ts                    #
 │   │   │   └── useEstadoTransporte.ts       #    
 │   │   └── services/      
 │   │       ├── estadoTransporte.service.ts  # 
-│   │       └── gres.service.ts              # 
+│   │       └── gre.service.ts               # 
 │   ├── products/
 │   │   ├── components/     
-│   │   │   ├── EstadoTransporte-gre.tsx
-│   │   │   ├── Table-gre.tsx
-│   │   │   └── Detalles-gre.tsx
-│   │   ├── hooks/          
+│   │   │   ├── TableProductos.tsx           #
+│   │   │   ├── DetallesProducto.tsx         #
+│   │   │   ├── FormCreateProducto.tsx       #
+│   │   │   ├── FormUpdateProducto.tsx       #
+│   │   │   └── FormDeleteProducto.tsx       #
+│   │   ├── hooks/
+│   │   │   └── useProducto.ts               #
 │   │   └── services/       
+│   │       └── producto.ts                  #
 │   ├── tracking/           # Lógica de seguimiento (mapas o línea de tiempo)
 │   └── users/              # Gestión de permisos (solo para Admin)
 ├── hooks/                  # Hooks globales (useAuth, useLocalStorage)
