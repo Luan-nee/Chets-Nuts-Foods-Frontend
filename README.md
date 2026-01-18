@@ -20,7 +20,7 @@ src/
 │   └── roles.ts            # Definición de tipos: 'ADMIN' | 'WORKER' | 'DRIVER'
 ├── features/               # El núcleo del negocio (Lógica compartida)
 │   ├── auth/               # Login y gestión de cuenta (Perfil del Trabajador)
-│   ├── guides/             # CRUD de Guías, detalles y estados de transporte
+│   ├── gre/             # CRUD de Guías, detalles y estados de transporte
 │   │   ├── components/
 │   │   │   ├── TransporteGre.tsx            # 
 │   │   │   ├── SeguimientoGre.tsx           # 
@@ -35,7 +35,7 @@ src/
 │   │   └── services/      
 │   │       ├── estadoTransporte.service.ts  # 
 │   │       └── gre.service.ts               # 
-│   ├── products/
+│   ├── productos/
 │   │   ├── components/     
 │   │   │   ├── TableProductos.tsx           #
 │   │   │   ├── DetallesProducto.tsx         #
@@ -46,8 +46,26 @@ src/
 │   │   │   └── useProducto.ts               #
 │   │   └── services/       
 │   │       └── producto.ts                  #
-│   ├── tracking/           # Lógica de seguimiento (mapas o línea de tiempo)
+│   ├── transporte/           # Lógica de seguimiento (mapas o línea de tiempo)
+│   │   ├── components/
+│   │   │   ├── .tsx              
+│   │   │   └── .tsx             
+│   │   ├── hooks/
+│   │   │   ├── .ts                    
+│   │   │   └── .ts       
+│   │   └── services/      
+│   │       ├── .ts  
+│   │       └── .ts               
 │   └── users/              # Gestión de permisos (solo para Admin)
+│       ├── components/
+│       │   ├── .tsx              
+│       │   └── .tsx             
+│       ├── hooks/
+│       │   ├── .ts                    
+│       │   └── .ts       
+│       └── services/      
+│           ├── .ts  
+│           └── .ts               
 ├── hooks/                  # Hooks globales (useAuth, useLocalStorage)
 ├── routes/                 # Configuración de React Router
 c   ├── PrivateRoute.tsx    # Componente que valida sesión y ROL
