@@ -17,61 +17,68 @@ src/
 │   │   └── AppLayout.tsx
 │   └── ui/                 # Botones, Inputs, Modales (Shared)
 ├── config/                 # Roles, permisos y constantes
-│   └── roles.ts            # Definición de tipos: 'ADMIN' | 'WORKER' | 'DRIVER'
-├── features/               # El núcleo del negocio (Lógica compartida)
+│   └── roles.ts            # Definición de tipos: 'ADMINISTRADOR' | 'TRABAJADOR' | 'CHOFER'
+├── features/               # El núcleo del negocio
 │   ├── auth/               # Login y gestión de cuenta (Perfil del Trabajador)
+│   │   ├── Perfil.tsx      # Gestión de cuenta del usuario.
+│   │   └── Login.tsx       # Interfaz del login
 │   ├── gre/             # CRUD de Guías, detalles y estados de transporte
 │   │   ├── components/
-│   │   │   ├── TransporteGre.tsx            # 
-│   │   │   ├── SeguimientoGre.tsx           # 
-│   │   │   ├── TableGre.tsx                 # 
-│   │   │   ├── DetallesGre.tsx              # 
-│   │   │   ├── FormCreateGre.tsx            # 
-│   │   │   ├── FormUpdateGre.tsx            # 
-│   │   │   └── FormDeleteGre.tsx            # 
+│   │   │   ├── TableGre.tsx                 # Listar todas las guías de remisión
+│   │   │   ├── DetallesGre.tsx              # Ver detalles de una guía de remisión
+│   │   │   ├── FormCreateGre.tsx            # Formulario para crear nueva guía de remisión
+│   │   │   ├── FormUpdateGre.tsx            # Formulario para actualizar una guía de remisión existente
+│   │   │   └── FormDeleteGre.tsx            # Formulario para eliminar una guía de remisión existente
 │   │   ├── hooks/
-│   │   │   ├── useGre.ts                    #
-│   │   │   └── useEstadoTransporte.ts       #    
+│   │   │   └── useGre.ts                    # Hook para manejar las guís de remisión
 │   │   └── services/      
-│   │       ├── estadoTransporte.service.ts  # 
-│   │       └── gre.service.ts               # 
+│   │       └── gre.service.ts               # Servicio para interactuar con el endpoint de guías de remisión
 │   ├── productos/
 │   │   ├── components/     
-│   │   │   ├── TableProductos.tsx           #
-│   │   │   ├── DetallesProducto.tsx         #
-│   │   │   ├── FormCreateProducto.tsx       #
-│   │   │   ├── FormUpdateProducto.tsx       #
-│   │   │   └── FormDeleteProducto.tsx       #
+│   │   │   ├── TableProductos.tsx           # Listar todas las guias de remisión
+│   │   │   ├── DetallesProducto.tsx         # Ver detalles de una guía de remisión
+│   │   │   ├── FormCreateProducto.tsx       # Formulario para crear un nuevo producto
+│   │   │   ├── FormUpdateProducto.tsx       # Formulario para actualizar la información de un producto existente
+│   │   │   └── FormDeleteProducto.tsx       # Formulario para eliminar un producto existente
 │   │   ├── hooks/
-│   │   │   └── useProducto.ts               #
+│   │   │   └── useProducto.ts               # Hook para manejar los productos
 │   │   └── services/       
-│   │       └── producto.ts                  #
+│   │       └── producto.service.ts          # Servicio para interactuar con el endpoint de productos
 │   ├── transporte/           # Lógica de seguimiento (mapas o línea de tiempo)
 │   │   ├── components/
-│   │   │   ├── .tsx              
-│   │   │   └── .tsx             
+│   │   │   ├── FormUpdateTransporte.tsx     # Formulario para actualizar el estado de transporte.
 │   │   ├── hooks/
-│   │   │   ├── .ts                    
-│   │   │   └── .ts       
+│   │   │   └── useTransporte.ts             # Hook para manejar la información del transporte    
 │   │   └── services/      
-│   │       ├── .ts  
-│   │       └── .ts               
+│   │       └── transporte.service.ts        # Servicio para interactuar con el endpoint de transporte
+│   ├── seguimiento/           # Seguimiento del transporte durante su recorrido
+│   │   ├── components/
+│   │   │   └── SeguimientoGre.tsx           # Visualizar el seguimiento de una carga
+│   │   ├── hooks/
+│   │   │   ├── useSeguimiento.ts            # Hook para manejar los datos del seguimiento
+│   │   └── services/      
+│   │       └── seguimiento.service.ts       # Servicio para interactuar con el endpoint de seguimiento
 │   └── users/              # Gestión de permisos (solo para Admin)
 │       ├── components/
-│       │   ├── .tsx              
-│       │   └── .tsx             
+│       │   ├── TableEmpleados.tsx           # Listar todos los empleados
+│       │   ├── Permisos.tsx                 # Gestionar los permisos de un empleado
+│       │   ├── DetallesEmpleado.tsx         # Visualizar la información completa de un empleado 
+│       │   ├── FormCreateEmpleado.tsx       # Formulario para registrar nuevo empleado
+│       │   ├── FormDeleteEmpleado.tsx       # Formulario para eliminar un empleado existente
+│       │   └── FormUpdateEmpleado.tsx       # Formulario para actualizar la información de un empleado
 │       ├── hooks/
-│       │   ├── .ts                    
-│       │   └── .ts       
+│       │   ├── usePermisos.ts               # Hook para manejar los permisos
+│       │   └── useEmpleado.ts               # Hook para manejar los empleados
 │       └── services/      
-│           ├── .ts  
-│           └── .ts               
+│           ├── empleados.service.ts         # Servicio para interactuar con el endpoint de empleados
+│           └── permisos.service.ts          # Servicio para interactuar con el endpoint de permisos
 ├── hooks/                  # Hooks globales (useAuth, useLocalStorage)
 ├── routes/                 # Configuración de React Router
 c   ├── PrivateRoute.tsx    # Componente que valida sesión y ROL
 │   └── AppRoutes.tsx       # Definición de rutas por rol
 └── pages/                  # Vistas finales que ensamblan las features
     ├── administrador/      # DashboardAdmin, UserManagementPage
+    │   ├── usuario.tsx           # Actualizar información de usuario
     │   ├── estadisticas.tsx      # Graficos, Resumen y Ventas
     │   ├── lista-gre.tsx         # Listar guías de remisión, ver detalles.
     │   ├── trabajadores.tsx      # Registrar nuevo trabajador, inhabilitar y crear cuenta de acceso.
