@@ -11,17 +11,27 @@ Esta aplicación utiliza una arquitectura **Basada en Características (Features
 ```text
 src/
 ├── api/                    # Configuración de Axios/Fetch y clientes API
+│   ├── gre.api.ts                  # consume el endpoint de guias de remisión
+│   ├── producto.api.ts             # consume el endpoint de productos
+│   ├── transporte.api.ts           # consume el endpoint de transporte
+│   ├── seguimiento.api.ts          # consume el endpoint de productos 
+│   ├── usuario.api.ts              # consume el endpoint de información de usuario 
+│   └── empleados.api.ts            # consume el endpoint de empleados
 ├── components/             # Componentes comunes (Layout, Navbar, Sidebar, UI)
 │   ├── layout/
-│   │   ├── RoleBasedSidebar.tsx  # Menú que cambia según el rol
-│   │   └── AppLayout.tsx
+│   │   └── RoleBasedSidebar.tsx    # Menú que cambia según el rol
 │   └── ui/                 # Botones, Inputs, Modales (Shared)
+│       ├── EstadoGuia.tsx          # Estado de transporte ( Entregado, Enviad, Borrado )
+│       ├── .tsx
+│       ├── .tsx
+│       ├── .tsx
+│       └── .tsx
 ├── config/                 # Roles, permisos y constantes
-│   └── roles.ts            # Definición de tipos: 'ADMINISTRADOR' | 'TRABAJADOR' | 'CHOFER'
+│   └── roles.ts                    # Definición de tipos: 'ADMINISTRADOR' | 'TRABAJADOR' | 'CHOFER'
 ├── features/               # El núcleo del negocio
-│   ├── auth/               # Login y gestión de cuenta (Perfil del Trabajador)
-│   │   ├── Perfil.tsx      # Gestión de cuenta del usuario.
-│   │   └── Login.tsx       # Interfaz del login
+│   ├── auth/                       # Login y gestión de cuenta (Perfil del Trabajador)
+│   │   ├── Perfil.tsx                      # Gestión de cuenta del usuario.
+│   │   └── Login.tsx                       # Interfaz del login
 │   ├── gre/             # CRUD de Guías, detalles y estados de transporte
 │   │   ├── components/
 │   │   │   ├── TableGre.tsx                 # Listar todas las guías de remisión
@@ -74,7 +84,7 @@ src/
 │           └── permisos.service.ts          # Servicio para interactuar con el endpoint de permisos
 ├── hooks/                  # Hooks globales (useAuth, useLocalStorage)
 ├── routes/                 # Configuración de React Router
-c   ├── PrivateRoute.tsx    # Componente que valida sesión y ROL
+│   ├── PrivateRoute.tsx    # Componente que valida sesión y ROL
 │   └── AppRoutes.tsx       # Definición de rutas por rol
 └── pages/                  # Vistas finales que ensamblan las features
     ├── administrador/      # DashboardAdmin, UserManagementPage
