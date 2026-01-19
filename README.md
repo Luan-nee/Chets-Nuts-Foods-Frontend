@@ -84,23 +84,23 @@ src/
 │           └── permisos.service.ts          # Servicio para interactuar con el endpoint de permisos
 ├── hooks/                  # Hooks globales (useAuth, useLocalStorage)
 ├── routes/                 # Configuración de React Router
-│   ├── PrivateRoute.tsx    # Componente que valida sesión y ROL
+│   ├── PrivateRoute.tsx            # Componente que valida sesión y ROL
 │   └── AppRoutes.tsx       # Definición de rutas por rol
 └── pages/                  # Vistas finales que ensamblan las features
     ├── administrador/      # DashboardAdmin, UserManagementPage
-    │   ├── usuario.tsx           # Actualizar información de usuario
-    │   ├── estadisticas.tsx      # Graficos, Resumen y Ventas
-    │   ├── lista-gre.tsx         # Listar guías de remisión, ver detalles.
-    │   ├── trabajadores.tsx      # Registrar nuevo trabajador, inhabilitar y crear cuenta de acceso.
-    │   ├── productos.tsx         # Gestionar stock y CRUD producto. 
-    │   └── seguimiento.tsx       # Seguimiento del transporte
+    │   ├── usuario.tsx             # Actualizar información de usuario
+    │   ├── estadisticas.tsx        # Graficos, Resumen y Ventas
+    │   ├── lista-gre.tsx           # Listar guías de remisión, ver detalles.
+    │   ├── trabajadores.tsx        # Registrar nuevo trabajador, inhabilitar y crear cuenta de acceso.
+    │   ├── productos.tsx           # Gestionar stock y CRUD producto. 
+    │   └── seguimiento.tsx         # Seguimiento del transporte
     ├── trabajador/         # DashboardWorker, CreateGuidePage
-    │   ├── usuario.tsx           # Actualizar información de usuario
-    │   ├── lista-gre.tsx         # Listar guías de remisión, ver detalles, modificar y dar de baja
-    │   ├── crear-gre.tsx         # Registrar nueva guía de remisión
-    │   └── seguimiento.tsx       # Seguimiento del transporte 
+    │   ├── usuario.tsx             # Actualizar información de usuario
+    │   ├── lista-gre.tsx           # Listar guías de remisión, ver detalles, modificar y dar de baja
+    │   ├── crear-gre.tsx           # Registrar nueva guía de remisión
+    │   └── seguimiento.tsx         # Seguimiento del transporte 
     └── chofer/             # DriverTaskPage, UpdateDeliveryPage
-        ├── usuario.tsx           # Actualizar información de usuario
-        ├── transporte.tsx        # Actualizar el estado de transporte
-        └── gre.tsx               # Visualizar detalles de la guia de remisión asociado a su transporte
+        ├── usuario.tsx             # Actualizar información de usuario
+        ├── transporte.tsx          # Actualizar el estado de transporte
+        └── gre.tsx                 # Visualizar detalles de la guia de remisión asociado a su transporte
 ```
