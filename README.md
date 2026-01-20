@@ -19,7 +19,7 @@ src/
 │   └── empleados.api.ts            # consume el endpoint de empleados
 ├── components/             # Componentes comunes (Layout, Navbar, Sidebar, UI)
 │   ├── layout/
-│   │   └── RoleBasedSidebar.tsx    # Menú que cambia según el rol
+│   │   └── NavBar.tsx              # Barra de navegación
 │   └── ui/                 # Botones, Inputs, Modales (Shared)
 │       ├── EstadoGuia.tsx          # Estado de transporte ( Entregado, Enviad, Borrado )
 │       ├── .tsx
