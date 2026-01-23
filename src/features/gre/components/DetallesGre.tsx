@@ -19,7 +19,7 @@ const headerTable: string[] = [
 
 export default function DetallesGre({ showDetallesGre }: DetallesGreProps) {
   // usa el hook personalizado para obtener los detalles de la guía de remisión
-  const { data: detallesGre, isLoading, isError, fetchData: recargarDetallesGuiaRemision } = useFetchDetallesGuiaRemision(1); // Aquí el ID es estático para el ejemplo
+  const { data: detallesGre, isLoading, isError} = useFetchDetallesGuiaRemision(1); // Aquí el ID es estático para el ejemplo
 
   return (
     <div className="flex-1 h-screen flex flex-col overflow-hidden">
