@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Plus, Eye, Copy, Edit, Trash2, ChevronLeft, ChevronRight, Calendar, Truck, Package, Users, LayoutDashboard, Settings } from 'lucide-react';
+import Table from '../../components/ui/Table';
 
 export default function Template() {
   const [activeFilter, setActiveFilter] = useState('Todos');
@@ -37,15 +38,26 @@ export default function Template() {
       estadoColor: 'bg-blue-500'
     },
     {
-      numero: 'T001-0000427',
-      fecha: '25 Oct 2023',
-      hora: '11:00 AM',
-      cliente: 'Inversiones Metalúrgicas',
-      ruc: 'RUC: 20987654321',
-      origen: 'Callao',
-      destino: 'Arequipa',
-      estado: 'BORRADOR',
-      estadoColor: 'bg-gray-600'
+      numero: 'T001-0000428',
+      fecha: '26 Oct 2023',
+      hora: '16:45 PM',
+      cliente: 'Comercializadora Andina',
+      ruc: 'RUC: 20567891234',
+      origen: 'Lima',
+      destino: 'Cusco',
+      estado: 'ANULADO',
+      estadoColor: 'bg-red-600'
+    },
+    {
+      numero: 'T001-0000429',
+      fecha: '27 Oct 2023',
+      hora: '10:30 AM',
+      cliente: 'Servicios Logísticos del Sur',
+      ruc: 'RUC: 20345678912',
+      origen: 'Lima',
+      destino: 'Ica',
+      estado: 'ENTREGADO',
+      estadoColor: 'bg-green-600'
     }
   ];
 
@@ -58,35 +70,36 @@ export default function Template() {
             <h1 className="text-2xl font-bold text-white mb-1">Gestión de Guías</h1>
             <p className="text-sm text-gray-400">Administra y emite tus documentos de transporte electrónico.</p>
           </div>
-          <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium transition-colors">
-            <Plus className="w-5 h-5" />
-            Emitir Guía
-          </button>
         </div>
       </div>
 
       {/* Filters and Search */}
       <div className="bg-gray-900 border-b border-gray-800 px-8 py-4">
         <div className="flex items-center justify-between mb-4">
-          {/* Search */}
-          <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-            <input
-              type="text"
-              placeholder="Buscar por número de guía, cliente o RUC..."
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-            />
-          </div>
+          
+          {/* Search : FILTRO DESACTIVADO */}
+          {/* 
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+              <input
+                type="text"
+                placeholder="Buscar por número de guía, cliente o RUC..."
+                className="w-full bg-gray-800 border border-gray-700 rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              />
+            </div> 
+          */}
 
-          {/* Date Range */}
-          <button className="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-gray-600 text-gray-300 px-4 py-2.5 rounded-lg text-sm transition-colors ml-4">
-            <Calendar className="w-4 h-4" />
-            Oct 01, 2023 - Oct 31, 2023
-          </button>
+          {/* Date Range: FILTRO DESACTIVADO */}
+          {/* 
+            <button className="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-gray-600 text-gray-300 px-4 py-2.5 rounded-lg text-sm transition-colors ml-4">
+              <Calendar className="w-4 h-4" />
+              Oct 01, 2023 - Oct 31, 2023
+            </button> 
+          */}
         </div>
 
-        {/* Filter Tabs */}
-        <div className="flex gap-2">
+        {/* Filter Tabs: FILTRADO DESACTIVADO */}
+        {/* <div className="flex gap-2">
           {filters.map((filter) => (
             <button
               key={filter.name}
@@ -100,99 +113,100 @@ export default function Template() {
               {filter.name}
             </button>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Table */}
       <div className="flex-1 overflow-auto px-8 py-6">
         <div className="bg-gray-900 rounded-lg border border-gray-800 overflow-hidden">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-gray-800">
-                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Nº Guía</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Fecha Emisión</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Cliente / Destinatario</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Punto de Partida / Llegada</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Estado</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Acciones</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-800">
-              {guias.map((guia, index) => (
-                <tr key={index} className="hover:bg-gray-800/50 transition-colors">
-                  <td className="px-6 py-4">
-                    <span className="text-blue-400 font-medium">{guia.numero}</span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="text-sm">
-                      <div className="text-gray-300">{guia.fecha}</div>
-                      <div className="text-gray-500">{guia.hora}</div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="text-sm">
-                      <div className="text-gray-300 font-medium">{guia.cliente}</div>
-                      <div className="text-gray-500">{guia.ruc}</div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-2 text-sm text-gray-400">
-                      <span>{guia.origen}</span>
-                      <span>→</span>
-                      <span>{guia.destino}</span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${guia.estadoColor} text-white`}>
-                      {guia.estado}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-2">
-                      <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors" title="Ver">
-                        <Eye className="w-4 h-4 text-gray-400" />
-                      </button>
-                      <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors" title="Copiar">
-                        <Copy className="w-4 h-4 text-gray-400" />
-                      </button>
-                      {guia.estado === 'BORRADOR' && (
-                        <>
-                          <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors" title="Editar">
-                            <Edit className="w-4 h-4 text-gray-400" />
-                          </button>
-                          <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors" title="Eliminar">
-                            <Trash2 className="w-4 h-4 text-red-400" />
-                          </button>
-                        </>
-                      )}
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <Table>
+            {guias.map((guia, index) => (
+              <RowTable key={index} guia={guia} index={index} />
+            ))}
+          </Table>
         </div>
 
-        {/* Pagination */}
-        <div className="flex items-center justify-between mt-6">
-          <p className="text-sm text-gray-400">
-            Mostrando <span className="font-medium text-gray-300">1</span> a <span className="font-medium text-gray-300">10</span> de <span className="font-medium text-gray-300">128</span> resultados
-          </p>
-          <div className="flex items-center gap-2">
-            <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-              <ChevronLeft className="w-5 h-5 text-gray-400" />
-            </button>
-            <button className="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-sm font-medium">1</button>
-            <button className="px-3 py-1.5 hover:bg-gray-800 text-gray-400 rounded-lg text-sm font-medium transition-colors">2</button>
-            <button className="px-3 py-1.5 hover:bg-gray-800 text-gray-400 rounded-lg text-sm font-medium transition-colors">3</button>
-            <span className="px-2 text-gray-500">...</span>
-            <button className="px-3 py-1.5 hover:bg-gray-800 text-gray-400 rounded-lg text-sm font-medium transition-colors">13</button>
-            <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors">
-              <ChevronRight className="w-5 h-5 text-gray-400" />
-            </button>
-          </div>
-        </div>
+        {/* Pagination : DESACTIVADO */}
+        {/* 
+          <div className="flex items-center justify-between mt-6">
+            <p className="text-sm text-gray-400">
+              Mostrando <span className="font-medium text-gray-300">1</span> a <span className="font-medium text-gray-300">10</span> de <span className="font-medium text-gray-300">128</span> resultados
+            </p>
+            <div className="flex items-center gap-2">
+              <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                <ChevronLeft className="w-5 h-5 text-gray-400" />
+              </button>
+              <button className="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-sm font-medium">1</button>
+              <button className="px-3 py-1.5 hover:bg-gray-800 text-gray-400 rounded-lg text-sm font-medium transition-colors">2</button>
+              <button className="px-3 py-1.5 hover:bg-gray-800 text-gray-400 rounded-lg text-sm font-medium transition-colors">3</button>
+              <span className="px-2 text-gray-500">...</span>
+              <button className="px-3 py-1.5 hover:bg-gray-800 text-gray-400 rounded-lg text-sm font-medium transition-colors">13</button>
+              <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors">
+                <ChevronRight className="w-5 h-5 text-gray-400" />
+              </button>
+            </div>
+          </div> 
+        */}
       </div>
     </div>
+  );
+}
+
+interface PropTable {
+  guia: {
+    numero: string;
+    fecha: string;
+    hora: string;
+    cliente: string;
+    ruc: string;
+    origen: string;
+    destino: string;
+    estado: string;
+    estadoColor: string;
+  };
+  index: number;
+}
+
+function RowTable({guia, index}: PropTable) {
+  return (
+    <tr key={index} className="hover:bg-gray-800/50 transition-colors">
+      <td className="px-6 py-4">
+        <span className="text-blue-400 font-medium">{guia.numero}</span>
+      </td>
+      <td className="px-6 py-4">
+        <div className="text-sm">
+          <div className="text-gray-300">{guia.fecha}</div>
+          <div className="text-gray-500">{guia.hora}</div>
+        </div>
+      </td>
+      <td className="px-6 py-4">
+        <div className="text-sm">
+          <div className="text-gray-300 font-medium">{guia.cliente}</div>
+          <div className="text-gray-500">{guia.ruc}</div>
+        </div>
+      </td>
+      <td className="px-6 py-4">
+        <div className="flex items-center gap-2 text-sm text-gray-400">
+          <span>{guia.origen}</span>
+          <span>→</span>
+          <span>{guia.destino}</span>
+        </div>
+      </td>
+      <td className="px-6 py-4">
+        <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${guia.estadoColor} text-white`}>
+          {guia.estado}
+        </span>
+      </td>
+      <td className="px-6 py-4">
+        <div className="flex items-center gap-2">
+          <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors" title="Ver">
+            <Eye className="w-4 h-4 text-gray-400" />
+          </button>
+          <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors" title="Copiar">
+            <Copy className="w-4 h-4 text-gray-400" />
+          </button>
+        </div>
+      </td>
+    </tr>
   );
 }
