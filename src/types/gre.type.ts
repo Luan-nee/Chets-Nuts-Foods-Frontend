@@ -1,3 +1,4 @@
+type estadoGre = "entregado" | "en tránsito" | "pendiente";
 
 export type simpleGreType = {
   id: number;
@@ -12,5 +13,55 @@ export type simpleGreType = {
   };
   punto_de_partida: string;
   punto_de_llegada: string;
-  estado: "entregado" | "en tránsito" | "pendiente";
+  estado: estadoGre;
+};
+
+export type DetailedGreType = {
+  id_guia: number;
+  clave: string;
+  numero: string;
+  fecha_emision: string;
+  hora: string;
+  remitente: {
+    nombre_razonSocial: string;
+    tipo_documento: string;
+    numero_documento: string;
+    direccion_fiscal: string;
+  };
+  destinatario: {
+    nombre_razonSocial: string;
+    tipo_documento: string;
+    numero_documento: string;
+    direccion_fiscal: string;
+  };
+  transporte: {
+    conductor: {
+      nombres: string;
+      apellidos: string;
+      numero_licencia: string;
+    };
+    empresa_transportista: {
+      nombre_razonSocial: string;
+      tipo_documento: string;
+      numero_documento: string;
+    };
+    vehiculo: { 
+      placa: string;
+      descripcion: string;
+      tipo: string;
+      carga_maxima: number;
+    };
+  };
+  productos: {
+    nombre: string;
+    unidad_medida: string;
+    peso_total: number;
+    observacion: string;
+  }[];
+  resumen_carga: {
+    cantidad_productos: number;
+    peso_total: number;
+  };
+  estado: estadoGre;
+  observacion: string;
 };

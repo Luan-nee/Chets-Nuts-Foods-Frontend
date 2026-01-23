@@ -15,4 +15,13 @@ export default class GreApi extends BaseRequestApi {
       }
     });
   }
+
+  public async getByCodigoSeguimiento<T>(id: number): Promise<BodyResponse<T>> {
+    return this.request<T>(`${this.base_url}/${id}`, {
+      method: 'GET',
+      headers: {
+        'x-mock-response-name': 'not found - detalles de una guia de remision'
+      }
+    });
+  }
 }
