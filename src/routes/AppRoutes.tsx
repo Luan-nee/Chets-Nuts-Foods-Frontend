@@ -21,7 +21,7 @@ export default function AppRoutes() {
                 <MainLayout>
                   <ListaGre />
                 </MainLayout>
-              </PrivateRoute>
+              </PrivateRoute> 
             }
           />
           <Route
