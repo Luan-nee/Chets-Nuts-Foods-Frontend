@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Truck, Package, LayoutDashboard, Users, BarChart3, User, LogOut } from 'lucide-react';
+import { Truck, Package, LayoutDashboard, Users, User, LogOut } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 type LabelType = '/guias' | '/productos' | '/empleados' | '/';
