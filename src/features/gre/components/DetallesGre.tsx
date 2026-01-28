@@ -22,7 +22,7 @@ export default function DetallesGre({ showDetallesGre }: DetallesGreProps) {
   const { data: detallesGre, isLoading, isError } = useFetchDetallesGuiaRemision(1); // Aquí el ID es estático para el ejemplo
 
   return (
-    <div className="flex-1 h-screen flex flex-col overflow-hidden">
+    <div className="flex-1 flex flex-col overflow-hidden">
       {/* Header */}
       <div className="bg-gray-900 border-b border-gray-800 px-8 py-6">
         <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">

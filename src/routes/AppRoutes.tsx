@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Productos from '../pages/administrador/Productos';
 import Empleados from '../pages/test/Empleado';
 import ListaGre from '../pages/administrador/ListaGre';
-import Login from '../pages/Login';
+import Login from '../features/auth/Login';
 import MainLayout from '../components/layouts/MainLayout';
 import PrivateRoute from './PrivateRoute';
 import { AuthProvider } from '../context/AuthContext';

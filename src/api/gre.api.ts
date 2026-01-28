@@ -20,7 +20,7 @@ export default class GreApi extends BaseRequestApi {
     return this.request<T>(`${this.base_url}/${id}`, {
       method: 'GET',
       headers: {
-        'x-mock-response-name': 'not found - detalles de una guia de remision'
+        'x-mock-response-name': 'ok - detalles de una guia de remision'
       }
     });
   }
