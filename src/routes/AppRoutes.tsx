@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Productos from '../pages/administrador/Productos';
-import Empleados from '../pages/test/Empleado';
 import ListaGre from '../pages/administrador/ListaGre';
-import Login from '../features/auth/Login';
+import Login from '../pages/Login';
+import NotFound from '../pages/NotFound';
 import MainLayout from '../components/layouts/MainLayout';
 import PrivateRoute from './PrivateRoute';
 import { AuthProvider } from '../context/AuthContext';
@@ -44,18 +44,15 @@ export default function AppRoutes() {
               </PrivateRoute>
             }
           />
-          <Route
-            path="/empleados"
-            element={
+
+          <Route path="*" element={
               <PrivateRoute>
                 <MainLayout>
-                  <Empleados />
+                  <NotFound />
                 </MainLayout>
               </PrivateRoute>
-            }
+            } 
           />
-
-          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

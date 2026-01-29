@@ -1,1 +1,0 @@
-export const url_base: string = 'https://161a3dae-3154-4427-97ca-48ca81494472.mock.pstmn.io';

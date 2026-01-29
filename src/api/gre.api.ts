@@ -1,4 +1,4 @@
-import { url_base } from '../config/roles';
+import { url_base } from "../config/url_base";
 // importación de clases
 import BaseRequestApi from './BaseRequest.api';
 // importación de tipos

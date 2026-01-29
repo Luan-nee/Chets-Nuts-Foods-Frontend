@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useLogin } from './hooks/useLogin';
+import { useLogin } from '../features/auth/hooks/useLogin';
 import { Truck, LogIn } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
-import type { User, Credenciales } from '../../types/usuario.type';
+import { useAuth } from '../context/AuthContext';
+import type { User, Credenciales } from '../types/usuario.type';
 import { jwtDecode } from 'jwt-decode';
 
 export default function Login() {
