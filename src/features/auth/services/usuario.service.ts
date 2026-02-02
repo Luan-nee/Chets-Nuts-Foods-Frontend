@@ -1,5 +1,5 @@
 import Usuario from '../../../api/usuario.api';
-import type { User, ResponseSesion, Credenciales } from '../../../types/usuario.type';
+import type { ResponseSesion, Credenciales } from '../../../types/usuario.type';
 
 const usuarioApi = new Usuario();
 

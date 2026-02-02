@@ -6,12 +6,13 @@ export type Credenciales = {
 }
 
 export type ResponseSesion = {
-  access_token: string;
-  time_expired: string;
+  tokenZ: string;
+  roles: string;
+  nombreUser: string;
 }
 
 export type User = {
-  nombres: string;
-  apellidos: string;
-  rol: UserRole;
+  tokenZ: string;
+  nombreUser: string;
+  role: UserRole;
 }

@@ -24,9 +24,14 @@ export const useLogin = (): FetchState => {
     try {
       const response = await usuarioService.login(credenciales);
 
-      if (response.status === 200) {
+      if (response.status === "success") {
         setData(response.data);
-        localStorage.setItem('token', response.data.access_token);
+
+        // Guarda el token en el localStorage, pero en el futuro se espera guardar
+        // en una cookie HttpOnly para mayor seguridad
+        localStorage.setItem('token', response.data.tokenZ);
+
+
         return response.data; // <--- Retornamos el valor aquí
       } else {
         throw new Error(response.message);

@@ -4,7 +4,6 @@ import { useLogin } from '../features/auth/hooks/useLogin';
 import { Truck, LogIn } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import type { User, Credenciales } from '../types/usuario.type';
-import { jwtDecode } from 'jwt-decode';
 
 export default function Login() {
   const { login, isLoading, error } = useLogin();
@@ -28,10 +27,11 @@ export default function Login() {
 
     console.log("Login response data:", response, "Error:", error);
     if (response && !error) {
-      const token = response.access_token;
-      const decoded = jwtDecode<User>(token);
-      authLogin(decoded);
+      authLogin(response as unknown as User);
       navigate('/');
+    }else {
+      console.log("Login failed:", error);
+      alert('Error de autenticación: ' + (error || 'Respuesta inválida del servidor'));
     }
   };
 

@@ -10,15 +10,15 @@ export default function MainNavBar() {
     return <div>Usuario no identificado</div>;
   }
 
-  if (user?.rol === 'administrador') {
+  if (user?.role === 'administrador') {
     return <NavBarAdministrador />
   }
 
-  if (user?.rol === 'chofer') {
+  if (user?.role === 'chofer') {
     return <NavBarChofer />
   }
   
-  if (user?.rol === 'trabajador') {
+  if (user?.role === 'trabajador') {
     return <NavBarTrabajador />
   }
 }

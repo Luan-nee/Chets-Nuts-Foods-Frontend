@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Truck, Navigation, User, LogOut } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import UserInfo from '../ui/UserInfo';
 
 type LabelType = '/guias' | '/transporte' | '/';
 
@@ -53,15 +54,7 @@ export default function NavBarChofer() {
       </nav>
 
       <div className="p-3 border-t border-gray-800 space-y-2">
-        <div className="w-full flex gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 bg-gray-800">
-          <div className="flex items-center justify-center bg-gray-700 rounded-lg">
-            <User className="w-5 h-5" />
-          </div>
-          <div className="text-left w-full">
-            <p className="text-xs text-white font-bold">{user?.nombres} {user?.apellidos}</p>
-            <p className="text-xs text-gray-400">{user?.rol}</p>
-          </div>
-        </div>
+        <UserInfo nombreUser={user?.nombreUser || ''} role={user?.role || ''} />
         <button
           onClick={logout}
           className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:bg-red-900 hover:text-red-200 transition-colors"

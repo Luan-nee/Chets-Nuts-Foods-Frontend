@@ -1,5 +1,5 @@
 export type BodyResponse<T> = {
-  status: number;
+  status: "success" | "warning" | "error" | "Z";
   message: string;
   data: T;
 };
