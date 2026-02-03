@@ -1,0 +1,1 @@
+export const numero_celular: string = import.meta.env.VITE_NUMERO_WHATSAPP;
