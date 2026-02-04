@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Productos from '../pages/administrador/Productos';
 import ListaGre from '../pages/administrador/ListaGre';
+import Establecimientos from '../pages/administrador/Establecimientos';
 import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
 import MainLayout from '../components/layouts/MainLayout';
@@ -40,6 +41,17 @@ export default function AppRoutes() {
               <PrivateRoute>
                 <MainLayout>
                   <Productos />
+                </MainLayout>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/establecimientos"
+            element={
+              <PrivateRoute>
+                <MainLayout>
+                  <Establecimientos />
                 </MainLayout>
               </PrivateRoute>
             }

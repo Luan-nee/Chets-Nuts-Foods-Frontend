@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Truck, Package, LayoutDashboard, Users, User, LogOut } from 'lucide-react';
+import { Truck, Package, LayoutDashboard, Users, Store, LogOut } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import UserInfo from '../ui/UserInfo';
 
-type LabelType = '/guias' | '/productos' | '/empleados' | '/';
+type LabelType = '/guias' | '/productos' | '/establecimientos' | '/';
 
 interface MenuItem {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -19,7 +19,7 @@ export default function NavBarAdministrador() {
   const menuItems: MenuItem[] = [
     { icon: Package, label: 'Guías de Remisión', anchor: '/guias' },
     { icon: LayoutDashboard, label: 'Productos', anchor: '/productos' },
-    { icon: Users, label: 'Empleados', anchor: '/empleados' }
+    { icon: Store, label: 'Establecimientos', anchor: '/establecimientos' }
   ];
 
   return (
