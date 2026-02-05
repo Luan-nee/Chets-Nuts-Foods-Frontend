@@ -101,22 +101,22 @@ function RowTable({
         </span>
       </td>
       <td className="px-6 py-4">
-        <span className="text-blue-400 font-medium">
+        <span className="text-white font-medium">
           {establecimiento.direccion}
         </span>
       </td>
       <td className="px-6 py-4">
-        <span className="text-blue-400 font-medium">
+        <span className="text-white font-medium">
           {establecimiento.departamento}
         </span>
       </td>
       <td className="px-6 py-4">
-        <span className="text-blue-400 font-medium">
+        <span className="text-white font-medium">
           {establecimiento.provincia}
         </span>
       </td>
       <td className="px-6 py-4">
-        <span className="text-blue-400 font-medium">
+        <span className="text-white font-medium">
           {establecimiento.distrito}
         </span>
       </td>
