@@ -7,6 +7,7 @@ import NotFound from '../pages/NotFound';
 import MainLayout from '../components/layouts/MainLayout';
 import PrivateRoute from './PrivateRoute';
 import { AuthProvider } from '../context/AuthContext';
+import Trabajadores from '../pages/administrador/Trabajadores';
 
 export default function AppRoutes() {
   return (
@@ -52,6 +53,17 @@ export default function AppRoutes() {
               <PrivateRoute>
                 <MainLayout>
                   <Establecimientos />
+                </MainLayout>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/trabajadores"
+            element={
+              <PrivateRoute>
+                <MainLayout>
+                  <Trabajadores />
                 </MainLayout>
               </PrivateRoute>
             }

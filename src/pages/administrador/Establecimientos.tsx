@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, ChevronLeft, ChevronRight, Filter } from "lucide-react";
+import { Search, ChevronLeft, ChevronRight, Filter, Plus } from "lucide-react";
 import TableEstablecimientos from "../../features/establecimientos/components/TableEstablecimientos";
 import FormUpdateEst from "../../features/establecimientos/components/FormUpdateEst";
 // import TableGre from "../../features/establecimientos/components/TableEstablecimientos";
@@ -15,9 +15,16 @@ export default function Establecimientos() {
       <div className="bg-gray-900 border-b border-gray-800 px-8 py-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-white mb-1">Gestión de establecimientos</h1>
-            <p className="text-sm text-gray-400">Administra tus establecimientos.</p>
+            <h2 className="text-3xl font-bold text-white mb-2">Gestión de establecimientos</h2>
+            <p className="text-sm text-gray-400">Administra los establecimientos de la empresa.</p>
           </div>
+
+          <button 
+          // Implementar función para agregar nuevo establecimiento
+          className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-lg font-medium transition-colors">
+            <Plus className="w-5 h-5" />
+            Nuevo Establecimiento
+          </button>
         </div>
       </div>
 
