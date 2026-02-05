@@ -25,7 +25,7 @@ export const useFetchDetallesGuiaRemision = (id: number): FetchState => {
       setIsError(false);
       const response = await greService.getDetallesGuiaRemision(id);
       // Manejo de errores basado en el estado y el mensaje de la respuesta
-      if (response.status !== 200) {
+      if (response.status !== "success") {
         throw new Error(response.message);
       }
 
