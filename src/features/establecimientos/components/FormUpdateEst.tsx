@@ -80,7 +80,7 @@ function EstablishmentForm({ showFormEdit }: EstablishmentFormProps) {
           </div>
 
           <div className="space-y-4">
-            {/* Row 1: Nombre y ID */}
+            {/* Row 1: Nombre y tipo de establecimiento */}
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -95,6 +95,16 @@ function EstablishmentForm({ showFormEdit }: EstablishmentFormProps) {
                 />
               </div>
 
+              <InputSelect
+                name="Tipo Establecimiento"
+                placeholder="Seleccione una opcion"
+                options={tipoEstablecimiento}
+                handleInputChange={handleInputChange}
+              />
+            </div>
+
+            {/* Row 2: Responsable de administrar el establecimiento */}
+            <div className="grid grid-cols-1 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
                   ID del Responsable
@@ -109,15 +119,23 @@ function EstablishmentForm({ showFormEdit }: EstablishmentFormProps) {
               </div>
             </div>
 
-            {/* Row 2: Tipo y Estado */}
+            {/* Row 3: Dirección y estado del establecimiento */}
             <div className="grid grid-cols-2 gap-4">
-
-              <InputSelect
-                name="Tipo Establecimiento"
-                placeholder="Seleccione una opcion"
-                options={tipoEstablecimiento}
-                handleInputChange={handleInputChange}
-              />
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Dirección Exacta
+                </label>
+                <div className="relative">
+                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+                  <input
+                    type="text"
+                    placeholder="Calle, Av, Jr y número de local..."
+                    value={formData.direccion}
+                    onChange={(e) => handleInputChange('direccion', e.target.value)}
+                    className="w-full bg-[#0d1117] border border-[#30363d] rounded-lg pl-12 pr-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-[#1f6feb] transition-colors"
+                  />
+                </div>
+              </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -140,23 +158,6 @@ function EstablishmentForm({ showFormEdit }: EstablishmentFormProps) {
                   </button>
                   <span className="text-sm text-[#1f6feb] font-medium">Activo</span>
                 </div>
-              </div>
-            </div>
-
-            {/* Row 3: Dirección */}
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Dirección Exacta
-              </label>
-              <div className="relative">
-                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-                <input
-                  type="text"
-                  placeholder="Calle, Av, Jr y número de local..."
-                  value={formData.direccion}
-                  onChange={(e) => handleInputChange('direccion', e.target.value)}
-                  className="w-full bg-[#0d1117] border border-[#30363d] rounded-lg pl-12 pr-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-[#1f6feb] transition-colors"
-                />
               </div>
             </div>
 
