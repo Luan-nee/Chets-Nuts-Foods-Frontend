@@ -47,8 +47,11 @@ export type DetailedGreType = {
     };
     vehiculo: { 
       placa: string;
-      descripcion: string;
+      marca: string;
+      modelo: string;
+      anio: number;
       tipo: string;
+      descripcion: string;
       carga_maxima: number;
     };
   };
