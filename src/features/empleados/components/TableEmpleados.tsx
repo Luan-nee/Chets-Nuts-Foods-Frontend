@@ -100,7 +100,7 @@ function RowTable({empleado, index, setShowDetallesEmpleado, setSelectEmpleadoId
 
       {/* Actions */}
       <td className="px-6 py-4">
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center gap-2">
           <button 
           onClick={() => {
             setSelectEmpleadoId(empleado.id);
@@ -115,9 +115,6 @@ function RowTable({empleado, index, setShowDetallesEmpleado, setSelectEmpleadoId
           }}
           className="p-2 hover:bg-[#21262d] rounded-lg transition-colors" aria-label="Ver detalles">
             <Eye className="w-4 h-4 text-gray-400" />
-          </button>
-          <button className="p-2 hover:bg-[#21262d] rounded-lg transition-colors" aria-label="Más opciones">
-            <MoreVertical className="w-4 h-4 text-gray-400" />
           </button>
         </div>
       </td>
