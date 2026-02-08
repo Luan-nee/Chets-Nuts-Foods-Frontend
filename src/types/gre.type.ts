@@ -1,4 +1,5 @@
 type estadoGre = "entregado" | "en tránsito" | "pendiente";
+import type { VehiculoGre } from "./vehiculo.type";
 
 export type simpleGreType = {
   id: number;
@@ -45,15 +46,7 @@ export type DetailedGreType = {
       tipo_documento: string;
       numero_documento: string;
     };
-    vehiculo: { 
-      placa: string;
-      marca: string;
-      modelo: string;
-      anio: number;
-      tipo: string;
-      descripcion: string;
-      carga_maxima: number;
-    };
+    vehiculo: VehiculoGre
   };
   productos: {
     nombre: string;

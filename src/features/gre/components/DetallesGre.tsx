@@ -184,8 +184,8 @@ export default function DetallesGre({ showDetallesGre }: DetallesGreProps) {
                       <div>
                         <p className="text-sm text-white font-medium">{detallesGre?.transporte.vehiculo.placa}</p>
                         <div className="flex gap-3 text-xs text-gray-400">
-                          <span>Tipo: {detallesGre?.transporte.vehiculo.tipo}</span>
-                          <span>Cap: {detallesGre?.transporte.vehiculo.carga_maxima} kg.</span>
+                          <span>Tipo: {detallesGre?.transporte.vehiculo.tipoVehiculo}</span>
+                          <span>Cap: {detallesGre?.transporte.vehiculo.capacidadCarga} kg.</span>
                         </div>
                       </div>
                     </div>
