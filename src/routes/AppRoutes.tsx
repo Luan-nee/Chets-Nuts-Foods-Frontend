@@ -8,6 +8,7 @@ import MainLayout from '../components/layouts/MainLayout';
 import PrivateRoute from './PrivateRoute';
 import { AuthProvider } from '../context/AuthContext';
 import Trabajadores from '../pages/administrador/Trabajadores';
+import Vehiculos from '../pages/administrador/Vehiculos';
 
 export default function AppRoutes() {
   return (
@@ -64,6 +65,17 @@ export default function AppRoutes() {
               <PrivateRoute>
                 <MainLayout>
                   <Trabajadores />
+                </MainLayout>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/vehiculos"
+            element={
+              <PrivateRoute>
+                <MainLayout>
+                  <Vehiculos />
                 </MainLayout>
               </PrivateRoute>
             }
